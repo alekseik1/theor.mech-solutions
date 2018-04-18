@@ -1,7 +1,9 @@
 import numpy as np
 from pylatex import Document, Section, Subsection, Command, Math, Package
+from pylatex import Matrix as TexMatrix
 from pylatex.base_classes import Environment
 from pylatex.utils import italic, NoEscape
+from sympy import *
 import os
 
 task_number = ''
