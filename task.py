@@ -27,7 +27,13 @@ def fill_document(doc: Document):
     @param doc: Document to be filled
     @return:
     """
-    pass
+    # Условие задачи
+    with doc.create(Problem(task_number)):
+        pass
+
+    # Решение задачи
+    with doc.create(Solution(task_number)):
+        pass
 
 
 def fill_preambula(doc: Document):
