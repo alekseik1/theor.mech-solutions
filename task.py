@@ -23,6 +23,28 @@ class Solution(Environment):
         self.arguments = [number]
 
 
+# Не очень сильная вещь. Позволяет разбивать выражения, но не делает этого автоматическ
+class Multline(Environment):
+
+    _escape = False
+    content_separator = ''
+
+    def __init__(self, data=''):
+        super(Multline, self).__init__()
+        self.data = data
+
+
+# СИЛЬНАЯ ВЕЩЬ. Позволяет автоматически разбивать длинные выражения
+class Dmath(Environment):
+
+    _escape = False
+    content_separator = ''
+
+    def __init__(self, data=''):
+        super(Dmath, self).__init__()
+        self.data = data
+        self.packages = [Package(name='breqn')]
+
 def fill_document(doc: Document):
     """
     Fill document with solution
