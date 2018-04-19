@@ -7,6 +7,7 @@ import importlib
 all_tasks = [['19.8', '19.26'],
          ['20.17']]
 
+debug = False
 
 def fill_preambula(doc: Document):
     """
@@ -30,4 +31,4 @@ if __name__ == '__main__':
 
     #week2.task_20_17.fill_document(doc)
     fill_preambula(doc)
-    doc.generate_pdf('all', clean_tex=False)
+    doc.generate_pdf('all', clean_tex=not debug)
