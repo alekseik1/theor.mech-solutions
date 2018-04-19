@@ -114,7 +114,9 @@ def fill_document(doc: Document):
                     [diff(phi3, p1), diff(phi3, p2), diff(phi3, q1), diff(phi3, q2)]])
         doc.append(Math(data=['J = ', latex(_jac_definition())], escape=False))
         doc.append(Math(data=['=', latex(J)], escape=False))
-        doc.append(r'Подсчитаем, например, минор, состоящий из первых трех столбцов:')
+        doc.append(r'Чтобы первые интегралы были независимы, необходимо и достаточно, чтобы ранг матрицы равнялся'
+                   r' максимально возможному, т.е. 3. Для проверки этого используются миноры (погуглите, как)'
+                   r'Подсчитаем, например, минор, состоящий из первых трех столбцов:')
         J.col_del(3)
         doc.append(Math(data=['\Delta_1 = ', latex(det(J)), '=', latex(det(J).simplify()), '\\neq 0'], escape=False))
         doc.append(NoEscape(r'Отсюда заключаем, что первые интегралы \underline{независимы}.'))
