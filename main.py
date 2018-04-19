@@ -1,11 +1,9 @@
-import week2.task_20_17
-import task
 from pylatex import Document, Command, NoEscape
 import os
 import importlib
 
 all_tasks = [['19.8', '19.26'],
-         ['20.17']]
+             ['20.17']]
 
 debug = False
 
@@ -29,6 +27,5 @@ if __name__ == '__main__':
             fill_document = getattr(mod, 'fill_document')
             fill_document(doc)
 
-    #week2.task_20_17.fill_document(doc)
     fill_preambula(doc)
     doc.generate_pdf('all', clean_tex=not debug)
