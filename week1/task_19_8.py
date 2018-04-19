@@ -53,13 +53,14 @@ def fill_document(doc: Document):
     """
     # Условие задачи
     with doc.create(Problem(task_number)):
-        doc.append(r'Найти гамильтониан и составить канонические уравениния движения. '
-                   r'Лагранжиан скатайте сами, у меня не техается (лапки).')
+        doc.append(r'Найти гамильтониан и составить канонические уравениния движения:')
 
         t = Symbol('t')
         q1, q2, q3, q4 = Function('q1')(t), Function('q2')(t), Function('q3')(t), Function('q4')(t)
         L = Rational(1, 2)*(diff(q1, t)**2 + diff(q2, t)**2) + Rational(1, 4)*(diff(q1, t) + diff(q3, t))**2 + \
             Rational(1, 4)*(diff(q2, t) + diff(q4, t))**2 - 2*(q1**2 + q2**2 - q1*q2) - Rational(1, 4)*(q3**2 + q4**2)
+
+        doc.append(Dmath(Math(data=['L=', latex(L)], escape=False)))
 
 
     # Решение задачи
