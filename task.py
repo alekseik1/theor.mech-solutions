@@ -45,6 +45,11 @@ class Dmath(Environment):
         self.data = data
         self.packages = [Package(name='breqn')]
 
+
+def _hamiltoinian_definition():
+    return NoEscape(r'H = \sum_{i=1}^n p_i \dot{q_i} - L \bigg\rvert_{\dot{q_i} = f_i (p, q)}')
+
+
 def fill_document(doc: Document):
     """
     Fill document with solution
