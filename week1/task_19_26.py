@@ -78,7 +78,7 @@ def fill_document(doc: Document):
         doc.append(Math(data=[r'T = ', latex(T)], escape=False))
         doc.append(Math(data=[r'\text{П} = ', latex(P)], escape=False))
         doc.append(r'Остюда найдем лагранжиан, а потом гамильтониан:')
-        doc.append(Math(data=[r'L = T - \text{П} = ', latex(L)], escape=False))
+        doc.append(Dmath(Math(data=[r'L = T - \text{П} = ', latex(L)], escape=False)))
         # Это - функции от остальных
         p_x = diff(L, x_dot)
         p_y = diff(L, y_dot)
