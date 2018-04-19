@@ -2,6 +2,11 @@ import week2.task_20_17
 import task
 from pylatex import Document, Command, NoEscape
 import os
+import importlib
+
+all_tasks = [['19.8'],
+         ['20.17']]
+
 
 def fill_preambula(doc: Document):
     """
@@ -17,6 +22,12 @@ def fill_preambula(doc: Document):
 
 if __name__ == '__main__':
     doc = Document('basic')
-    week2.task_20_17.fill_document(doc)
+    for week, tasks in enumerate(all_tasks):
+        for task in tasks:
+            mod = importlib.import_module(('week%s.task_{}_{}' % (week+1)).format(*task.split('.')))
+            fill_document = getattr(mod, 'fill_document')
+            fill_document(doc)
+
+    #week2.task_20_17.fill_document(doc)
     fill_preambula(doc)
     doc.generate_pdf('all', clean_tex=False)
