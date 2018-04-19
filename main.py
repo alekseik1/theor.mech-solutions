@@ -4,7 +4,7 @@ from pylatex import Document, Command, NoEscape
 import os
 import importlib
 
-all_tasks = [['19.8'],
+all_tasks = [['19.8', '19.26'],
          ['20.17']]
 
 
