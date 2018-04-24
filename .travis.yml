@@ -15,5 +15,9 @@ before_install:
 install:
   - python main.py
 
+after_failure:
+  # Будем собирать до победного конца!
+  - python main.py
+
 script:
   - find . -name "all.pdf"
