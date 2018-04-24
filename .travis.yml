@@ -22,12 +22,16 @@ after_failure:
 script:
   - find . -name "all.pdf"
 
+before_deploy:
+  - git config --local user.name "alekseik1"
+  - git config --local user.email "alekseik1@yandex.ru"
+  - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
+
 deploy:
-  provider: release
+  provider: releases
   skip-cleanup: true
   api_key: $GITHUB_TOKEN
   file: "all.pdf"
-  commiter-from-gh: true
   overwrite: true
   on:
-    branch: master
+    tags: true
