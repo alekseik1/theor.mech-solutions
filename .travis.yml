@@ -1,0 +1,32 @@
+sudo: reqiured
+dist: trusty
+
+language: python
+env:
+  - LATEX_PACKAGES="texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended texlive-base texlive-bibtex-extra texlive-extra-utils texlive-font-utils texlive-binaries texlive-generic-extra texlive-generic-recommended texlive-lang-cyrillic texlive-latex-base texlive-latex-extra texlive-latex-recommended texlive-luatex texlive-math-extra texlive-pictures texlive-pstricks texlive-science texlive-xetex"
+
+python:
+  - "3.5"
+
+before_install:
+  - pip install -r requirements.txt
+  - sudo apt-get -qq update && sudo apt-get install -y $LATEX_PACKAGES
+
+install:
+  - python main.py
+
+after_failure:
+  # Будем собирать до победного конца!
+  - python main.py
+
+script:
+  - find . -name "all.pdf"
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  keep-history: true
+  on:
+    branch: master
+  commiter-from-gh: true
