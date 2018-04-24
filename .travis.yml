@@ -21,3 +21,12 @@ after_failure:
 
 script:
   - find . -name "all.pdf"
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  keep-history: true
+  on:
+    branch: master
+  commiter-from-gh: true
