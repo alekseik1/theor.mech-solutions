@@ -46,7 +46,7 @@ class Dmath(Environment):
         self.packages = [Package(name='breqn')]
 
 
-def _hamiltoinian_definition():
+def hamiltoinian_definition():
     return NoEscape(r'H = \sum_{i=1}^n p_i \dot{q_i} - L \bigg\rvert_{\dot{q_i} = f_i (p, q)}')
 
 
@@ -73,8 +73,9 @@ def fill_preambula(doc: Document):
     """
     doc.packages = set()
     doc.preamble = []
-    doc.documentclass = Command('documentclass', options=['12pt'], arguments=['book'])
+    doc.documentclass = Command('documentclass', options=['12pt', 'a4paper'], arguments=['article'])
     doc.preamble.append(NoEscape(r'\input{%s/preambula}' % os.path.abspath(os.path.join(os.getcwd(), os.pardir))))
+    doc.preamble.append(NoEscape(r'\usepackage[left=1.27cm,right=1.27cm,top=1.27cm,bottom=1.27cm]{geometry}%'))
 
 
 if __name__ == '__main__':
