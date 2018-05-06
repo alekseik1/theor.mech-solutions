@@ -1,25 +1,7 @@
-import os
+from pylatex import LineBreak, NewLine
+from task import *
 
-from pylatex import Document, Command, Math, LineBreak, Subsection, NewLine
-from pylatex import Matrix as TexMatrix
-from pylatex.base_classes import Environment
-from pylatex.utils import NoEscape, italic
-from sympy import *
 task_number = '20.17'
-
-
-class Problem(Environment):
-
-    def __init__(self, number=''):
-        super(Problem, self).__init__()
-        self.arguments = [number]
-
-
-class Solution(Environment):
-
-    def __init__(self, number=''):
-        super(Solution, self).__init__()
-        self.arguments = [number]
 
 
 # Определение матрицы Якоби
@@ -120,18 +102,6 @@ def fill_document(doc: Document):
         J.col_del(3)
         doc.append(Math(data=['\Delta_1 = ', latex(det(J)), '=', latex(det(J).simplify()), '\\neq 0'], escape=False))
         doc.append(NoEscape(r'Отсюда заключаем, что первые интегралы \underline{независимы}.'))
-
-
-def fill_preambula(doc: Document):
-    """
-    Заполняет преамбулу. ОБЯЗАТЕЛЬНО ВЫЗВАТЬ!
-    @param doc: Документ, в котором заполнить
-    @return:
-    """
-    doc.packages = set()
-    doc.preamble = []
-    doc.documentclass = Command('documentclass', options=['12pt'], arguments=['book'])
-    doc.preamble.append(NoEscape(r'\input{%s/preambula}' % os.path.abspath(os.path.join(os.getcwd(), os.pardir))))
 
 
 if __name__ == '__main__':

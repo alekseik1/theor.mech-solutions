@@ -1,48 +1,6 @@
-import numpy as np
-from pylatex import Document, Section, Subsection, Command, Math, Package
-from pylatex import Matrix as TexMatrix
-from pylatex.base_classes import Environment
-from pylatex.utils import italic, NoEscape
-from sympy import *
-import os
+from task import *
 
 task_number = '19.8'
-
-
-class Problem(Environment):
-
-    def __init__(self, number=''):
-        super(Problem, self).__init__()
-        self.arguments = [number]
-
-
-class Solution(Environment):
-
-    def __init__(self, number=''):
-        super(Solution, self).__init__()
-        self.arguments = [number]
-
-# Не очень сильная вещь. Позволяет разбивать выражения, но не делает этого автоматическ
-class Multline(Environment):
-
-    _escape = False
-    content_separator = ''
-
-    def __init__(self, data=''):
-        super(Multline, self).__init__()
-        self.data = data
-
-
-# СИЛЬНАЯ ВЕЩЬ. Позволяет автоматически разбивать длинные выражения
-class Dmath(Environment):
-
-    _escape = False
-    content_separator = ''
-
-    def __init__(self, data=''):
-        super(Dmath, self).__init__()
-        self.data = data
-        self.packages = [Package(name='breqn')]
 
 
 def fill_document(doc: Document):
@@ -109,18 +67,6 @@ def fill_document(doc: Document):
                                     latex((q_dot*p)[0].simplify()), '-', latex(_make_sub(L).simplify()), '=',
                                     latex(((q_dot*p)[0] - _make_sub(L)).simplify())], escape=False)))
         doc.append(r'Это совпадает с ответами. Я реально заебался, когда это писал.')
-
-
-def fill_preambula(doc: Document):
-    """
-    Заполняет преамбулу. ОБЯЗАТЕЛЬНО ВЫЗВАТЬ!
-    @param doc: Документ, в котором заполнить
-    @return:
-    """
-    doc.packages = set()
-    doc.preamble = []
-    doc.documentclass = Command('documentclass', options=['12pt'], arguments=['book'])
-    doc.preamble.append(NoEscape(r'\input{%s/preambula}' % os.path.abspath(os.path.join(os.getcwd(), os.pardir))))
 
 
 if __name__ == '__main__':
