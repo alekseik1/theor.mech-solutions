@@ -1,22 +1,13 @@
-from pylatex import Document, Command, NoEscape
-import os
 import importlib
+from task import *
 
 all_tasks = [['19.8', '19.26'],
-             ['20.17']]
+             ['20.17'],
+             [],
+             [],
+             ['23.24']]
 
 debug = False
-
-def fill_preambula(doc: Document):
-    """
-    Заполняет преамбулу. ОБЯЗАТЕЛЬНО ВЫЗВАТЬ!
-    @param doc: Документ, в котором заполнить
-    @return:
-    """
-    doc.packages = set()
-    doc.preamble = []
-    doc.documentclass = Command('documentclass', options=['12pt'], arguments=['book'])
-    doc.preamble.append(NoEscape(r'\input{%s/preambula}' % os.getcwd()))
 
 
 if __name__ == '__main__':
