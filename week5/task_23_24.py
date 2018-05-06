@@ -60,9 +60,7 @@ def fill_document(doc: Document):
                                   '=', latex(tmp), latex(p_new),
                                   '=', latex(simplify(tmp*p_new))])))
         doc.append(Dmath(r'p_{x_1} = ' + latex(collect(res[0], phi))))
-        doc.append(NewLine())
         doc.append(Dmath(r'p_{x_2} = ' + latex(collect(res[1], phi))))
-        doc.append(NewLine())
         doc.append(Dmath(r'p_{x_3} = ' + latex(simplify(res[2]))))
         # Грязный хак. Сверяемся с ответами
         ans_1, ans_2, ans_3 = sqrt((xi**2 - 1)*(1 - eta**2))/sigma/(xi**2 - eta**2)*(xi*p_xi - eta*p_eta)*cos(phi) \
