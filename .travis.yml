@@ -16,11 +16,7 @@ before_install:
   - sudo apt-get -qq update && sudo apt-get install -y $LATEX_PACKAGES
 
 install:
-  - python main.py
-
-after_failure:
-  # Будем собирать до победного конца!
-  - python main.py
+  - bash eternal_build.sh
 
 script:
   - find . -name "all.pdf"
