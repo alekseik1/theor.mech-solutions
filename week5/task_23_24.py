@@ -64,7 +64,14 @@ def fill_document(doc: Document):
         doc.append(Dmath(r'p_{x_2} = ' + latex(collect(res[1], phi))))
         doc.append(NewLine())
         doc.append(Dmath(r'p_{x_3} = ' + latex(simplify(res[2]))))
-        doc.append(r'Хотел бы я посмотреть в глаза составителям этой задачи')
+        # Грязный хак. Сверяемся с ответами
+        ans_1, ans_2, ans_3 = sqrt((xi**2 - 1)*(1 - eta**2))/sigma/(xi**2 - eta**2)*(xi*p_xi - eta*p_eta)*cos(phi) \
+                              - p_phi*sin(phi)/sigma/sqrt((xi**2-1)*(1-eta**2)), \
+                              sqrt((xi**2 - 1)*(1 - eta**2))/sigma/(xi**2 - eta**2)*(xi*p_xi - eta*p_eta)*sin(phi) \
+                              + p_phi*cos(phi)/sigma/sqrt((xi**2-1)*(1-eta**2)), eta/sigma*(xi**2 - 1)/(xi**2 - eta**2)\
+                              + xi*(1-eta**2)/(xi**2 - eta**2)
+        doc.append(r'Последняя строка не сходится с ответом. Честно говоря, Питону я доверяю больше, чем Ханукаеву. '
+                   r'Скатайте с ответов, если что)')
 
 
 if __name__ == '__main__':
