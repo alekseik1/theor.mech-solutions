@@ -28,7 +28,6 @@ script:
 before_deploy:
   - git config --local user.name "alekseik1"
   - git config --local user.email "alekseik1@yandex.ru"
-  - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
 
 deploy:
   provider: releases
