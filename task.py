@@ -73,8 +73,8 @@ def fill_preambula(doc: Document):
     """
     doc.packages = set()
     doc.preamble = []
-    doc.documentclass = Command('documentclass', options=['12pt', 'a4paper'], arguments=['article'])
-    doc.preamble.append(NoEscape(r'\input{%s/preambula}' % os.path.abspath(os.path.join(os.getcwd(), os.pardir))))
+    doc.documentclass = Command('documentclass', options=['12pt', 'a2paper'], arguments=['article'])
+    doc.preamble.append(NoEscape(r'\input{%s/preambula}' % os.path.abspath(os.path.join(__file__, os.pardir))))
     doc.preamble.append(NoEscape(r'\usepackage[left=1.27cm,right=1.27cm,top=1.27cm,bottom=1.27cm]{geometry}%'))
 
 
