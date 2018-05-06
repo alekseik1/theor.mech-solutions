@@ -16,7 +16,7 @@ before_install:
   - sudo apt-get -qq update && sudo apt-get install -y $LATEX_PACKAGES
 
 install:
-  - python main.py
+  - for i in $(seq 1 10); do python main.py; if [ $? -eq 0 ]; then break; fi; done
 
 after_failure:
   # Будем собирать до победного конца!
